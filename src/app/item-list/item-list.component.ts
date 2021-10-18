@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Item } from '../item'
 import { ItemService } from '../item.service'
 import { Router } from '@angular/router';
+import { fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-item-list',
@@ -11,6 +13,11 @@ import { Router } from '@angular/router';
 export class ItemListComponent implements OnInit {
 
   items: Item[];
+  filterType: string = '';
+  filterDescription: string = '';
+
+  @ViewChild('searchType') searchType: ElementRef<HTMLInputElement>;
+  @ViewChild('searchDescription') searchDescription: ElementRef<HTMLInputElement>;
 
   constructor(private itemService: ItemService,
     private router: Router) { }
@@ -25,8 +32,22 @@ export class ItemListComponent implements OnInit {
     });
   }
 
-  itemDetails(id: number){
-    this.router.navigate(['item-details', id]);
+  ngAfterViewInit() {
+    fromEvent(this.searchType.nativeElement, 'change')
+      .pipe()
+      .subscribe((e: Event) => {
+        const target = e.target as HTMLInputElement;
+        this.filterType = target.value;
+      });
+
+    fromEvent(this.searchDescription.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(250)
+      )
+      .subscribe((e: Event) => {
+        const target = e.target as HTMLInputElement;
+        this.filterDescription = target.value;
+      });
   }
 
   updateItem(id: number){
