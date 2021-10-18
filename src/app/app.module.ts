@@ -8,6 +8,8 @@ import { FilterItemsPipe } from './item-list/filter-item-list.pipe';
 import { CreateItemComponent } from './create-item/create-item.component';
 import { FormsModule} from '@angular/forms';
 import { UpdateItemComponent } from './update-item/update-item.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { UpdateItemComponent } from './update-item/update-item.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

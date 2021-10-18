@@ -1,0 +1,71 @@
+#content {
+    border: 1px solid rgb(170, 170, 170);
+}
+
+#title-area {
+    border: 1px solid rgb(170, 170, 170);
+    background-color: rgb(228, 228, 228);
+    justify-items: center;
+    padding: 1% 3%;
+}
+
+#title-area h2 {
+    margin: auto 0;
+}
+
+#search-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.8% 3% 0;
+}
+
+.label {
+    font-weight: 500;
+}
+
+#search-type {
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+}
+
+#search-type select {
+    margin-top: 7%;
+}
+
+#search-text input {
+    margin-top: 1.8%;
+}
+
+#search-text {
+    display: flex;
+    width: 77%;
+    flex-direction: column;
+}
+
+.orange-button {
+    background-color:rgb(197, 129, 2);
+    color: white;
+    width: 100%;
+    font-weight: 500;
+    border-radius:10px;
+}
+
+.action-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 2% 3%;
+}
+
+.action-area a {
+    width: 15%;
+    margin-left: 1%;
+}
+
+.item-btn {
+    background-color: white;
+    color: rgb(93, 93, 93);
+    border-color: rgb(197, 129, 2);
+}

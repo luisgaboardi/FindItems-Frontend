@@ -1,46 +1,72 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark" style="justify-content: space-between;">
-    <div>
-        <h2 style="color: white; padding: 6px 0 0 15px;"> Consultar Items </h2>
-    </div>
-    <div style="flex-direction: column;">
-        <div style="display: inline-flex; margin-right: 60px">
-            <label for="types">Tipo do item</label>
-            <select #searchType id="types">
-                <option value="" selected>-- Escolha o Tipo --</option>
-                <option value="Acessório">Acessório</option>
-                <option value="Documento">Documento</option>
-                <option value="Dispositivo">Dispositivo</option>
-                <option value="Outro">Outro</option>
-            </select>
-        </div>
-        <div style="display: inline-flex;">
-            <input #searchDescription type="search" placeholder="Buscar" class="form-control">
-        </div>
-    </div>
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a routerLink="../create-item" routerLinkActive="active" class="nav-link"
-                style="color: white; padding-right: 30px">Criar Item</a>
-        </li>
-    </ul>
-</nav>
+<head>
+    <script src="https://kit.fontawesome.com/759e57a952.js" crossorigin="anonymous"></script>
+</head>
 
-<table class="table table-striped table-bordered">
-    <thead>
-        <tr>
-            <th> Tipo </th>
-            <th> Descrição </th>
-            <th> Ações </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of (items | filterItems : filterType : filterDescription)">
-            <td> {{ item.type }} </td>
-            <td> {{ item.description }} </td>
-            <td>
-                <button (click)="updateItem(item.id)" class="btn btn-primary"> Atualizar</button>
-                <button (click)="deleteItem(item.id)" class="btn btn-danger" style="margin-left: 10px"> Deletar</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div style="justify-items: center; margin-bottom: 2%;">
+    <div id="content">
+        <div id="title-area">
+            <h2> Consultar Items </h2>
+        </div>
+
+        <div id="header-area">
+            <div id="search-area">
+                <div id="search-type">
+                    <label for="types" class="label">Tipo do item</label>
+                    <select name="types" #searchType [(ngModel)]="filterType" class="form-control" id="types-select">
+                        <option value="" selected>-- Escolha o Tipo --</option>
+                        <option value="Acessório">Acessório</option>
+                        <option value="Documento">Documento</option>
+                        <option value="Dispositivo">Dispositivo</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+                <div id="search-text">
+                    <label for="description" class="label">Descrição</label>
+                    <input name="description" #searchDescription [(ngModel)]="filterDescription" type="search" placeholder="Buscar" color
+                        class="form-control">
+                </div>
+            </div>
+            <div class="form-group action-area">
+                <a routerLink="../create-item" routerLinkActive="active">
+                    <button class="btn btn-default orange-button">
+                        <fa-icon [icon]="faPlus"></fa-icon>
+                        Novo
+                    </button>
+                </a>
+                <a>
+                    <button (click)="clearSearch()" class="btn btn-default orange-button">
+                        <fa-icon [icon]="faUndo"></fa-icon>
+                        Limpar
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div style="justify-self: center; margin: 0 3%;">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 15%; text-align: center;"> Tipo </th>
+                        <th style="width: 65%; text-align: center;"> Descrição </th>
+                        <th style="width: 8%; text-align: center;"> Ações </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of (items | filterItems : filterType : filterDescription)">
+                        <td> {{ item.type }} </td>
+                        <td> {{ item.description }} </td>
+                        <td style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                            <button (click)="updateItem(item.id)" class="btn btn-primary item-btn" style="display: flex; margin-right: 2px">
+                                <fa-icon [icon]="faEdit" size="sm"></fa-icon>
+                            </button>
+                            <button (click)="deleteItem(item.id)" class="btn btn-danger item-btn" style="display: flex;">
+                                <fa-icon [icon]="faTrash" size="sm"></fa-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

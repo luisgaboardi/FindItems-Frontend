@@ -4,6 +4,8 @@ import { ItemService } from '../item.service'
 import { Router } from '@angular/router';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { faEdit, faTrash, faPlus, faUndo  } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-item-list',
@@ -15,6 +17,12 @@ export class ItemListComponent implements OnInit {
   items: Item[];
   filterType: string = '';
   filterDescription: string = '';
+
+  //
+  faEdit = faEdit;
+  faTrash = faTrash;
+  faPlus = faPlus;
+  faUndo = faUndo;
 
   @ViewChild('searchType') searchType: ElementRef<HTMLInputElement>;
   @ViewChild('searchDescription') searchDescription: ElementRef<HTMLInputElement>;
@@ -59,5 +67,10 @@ export class ItemListComponent implements OnInit {
       console.log(data);
       this.getItems();
     })
+  }
+
+  clearSearch() {
+    this.filterDescription = '';
+    this.filterType = '';
   }
 }
