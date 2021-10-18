@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../item.service';
 import { Item } from '../item';
 import { ActivatedRoute, Router } from '@angular/router';
+import { faEdit, faTrash, faTimes, faUndo, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-update-item',
@@ -12,6 +13,14 @@ export class UpdateItemComponent implements OnInit {
 
   id: number;
   item: Item = new Item();
+
+  // Icons
+  faEdit = faEdit;
+  faTrash = faTrash;
+  faTimes = faTimes;
+  faUndo = faUndo;
+  faCheck = faCheck;
+
   constructor(private itemService: ItemService,
     private route: ActivatedRoute,
     private router: Router) { }
@@ -22,6 +31,11 @@ export class UpdateItemComponent implements OnInit {
       this.item = data;
       
     }, (error: any) => console.log(error));
+  }
+
+  clearSearch() {
+    this.item.type = '';
+    this.item.description = ' ';
   }
 
   onSubmit(){

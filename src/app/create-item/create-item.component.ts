@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../item';
 import { ItemService } from '../item.service';
 import { Router } from '@angular/router';
+import { faEdit, faTrash, faTimes, faUndo, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-create-item',
@@ -11,10 +12,20 @@ import { Router } from '@angular/router';
 export class CreateItemComponent implements OnInit {
 
   item: Item = new Item();
+
+  // Icons
+  faEdit = faEdit;
+  faTrash = faTrash;
+  faTimes = faTimes;
+  faUndo = faUndo;
+  faCheck = faCheck;
+
   constructor(private itemService: ItemService,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.item.description = '';
+    this.item.type = '';
   }
 
   saveItem(){
@@ -27,6 +38,11 @@ export class CreateItemComponent implements OnInit {
 
   goToItemList(){
     this.router.navigate(['/items']);
+  }
+
+  clearSearch() {
+    this.item.type = '';
+    this.item.description = '';
   }
   
   onSubmit(){

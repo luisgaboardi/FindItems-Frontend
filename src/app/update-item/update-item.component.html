@@ -1,31 +1,50 @@
-<div class="row">
-    <div class="card col-md-6 offset-md-3 offset-md-3">
-        <div class="row">
-            <h3 class="text-center"> Atualizar Item </h3>
-            <hr />
-            <div class="card-body">
-                <form (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                        <label> Tipo </label>
-                        <select required class="form-control" id="type" [(ngModel)]="item.type"
-                        name="type">
-                            <option value="Acessório">Acessório</option>
-                            <option value="Documento">Documento</option>
-                            <option value="Dispositivo">Dispositivo</option>
-                            <option value="Outro">Outro</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label> Descrição </label>
-                        <input type="text" class="form-control" id="description" [(ngModel)]="item.description"
-                            name="description">
-                    </div>
+<head>
+    <script src="https://kit.fontawesome.com/759e57a952.js" crossorigin="anonymous"></script>
+</head>
 
-                    <br />
-                    <button class="btn btn-success" type="submit">Confirmar</button>
-
-                </form>
-            </div>
+<div style="justify-items: center; margin-bottom: 2%;">
+    <div id="content">
+        <div id="title-area">
+            <h2> Editar Item </h2>
         </div>
+
+        <form (ngSubmit)="onSubmit()">
+            <div id="form-area">
+                <div id="input-type">
+                    <label for="types" class="label">Tipo do item</label>
+                    <select name="types" #inputType [(ngModel)]="item.type" class="form-control" id="types-select">
+                        <option value="" disabled selected>-- Escolha o Tipo --</option>
+                        <option value="Acessório">Acessório</option>
+                        <option value="Documento">Documento</option>
+                        <option value="Dispositivo">Dispositivo</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+                <div id="input-text">
+                    <label for="description" class="label">Descrição</label>
+                    <input name="description" #inputDescription [(ngModel)]="item.description" type="text"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="form-group action-area">
+                <a routerLink="../../items" routerLinkActive="active">
+                    <button class="btn btn-default orange-button">
+                        <fa-icon [icon]="faTimes"></fa-icon>
+                        Cancelar
+                    </button>
+                </a>
+                <a>
+                    <button (click)="clearSearch()" class="btn btn-default orange-button">
+                        <fa-icon [icon]="faUndo"></fa-icon>
+                        Limpar
+                    </button>
+                </a>
+                <a>
+                    <button class="btn btn-default orange-button" type="submit">
+                        <fa-icon [icon]="faCheck"></fa-icon>
+                        Salvar
+                    </button>
+                </a>
+            </div>
+        </form>
     </div>
-</div>

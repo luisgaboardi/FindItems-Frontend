@@ -18,7 +18,7 @@ export class ItemListComponent implements OnInit {
   filterType: string = '';
   filterDescription: string = '';
 
-  //
+  // Icons
   faEdit = faEdit;
   faTrash = faTrash;
   faPlus = faPlus;
@@ -36,7 +36,7 @@ export class ItemListComponent implements OnInit {
 
   private getItems(){
     this.itemService.getItemsList().subscribe((data: Item[]) => {
-      this.items = data;
+      this.items = data.reverse();
     });
   }
 
