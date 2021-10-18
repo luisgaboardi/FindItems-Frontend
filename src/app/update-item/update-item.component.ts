@@ -33,9 +33,8 @@ export class UpdateItemComponent implements OnInit {
     }, (error: any) => console.log(error));
   }
 
-  clearSearch() {
-    this.item.type = '';
-    this.item.description = ' ';
+  resetEdit() {
+    this.ngOnInit();
   }
 
   onSubmit(){

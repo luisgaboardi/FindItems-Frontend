@@ -3,7 +3,7 @@
 }
 
 #title-area {
-    border: 1px solid rgb(170, 170, 170);
+    border-bottom: 1px solid rgb(170, 170, 170);
     background-color: rgb(228, 228, 228);
     justify-items: center;
     padding: 1% 3%;
