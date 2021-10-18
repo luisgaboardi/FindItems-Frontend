@@ -26,6 +26,10 @@ export class UpdateItemComponent implements OnInit {
 
   onSubmit(){
     this.itemService.updateItem(this.id, this.item).subscribe( (data: any) =>{
+      if (!this.item.type || !this.item.description) {
+        alert('Os dois campos são obrigatórios.');
+        return;
+      }
       this.goToItemList();
     }
     , (error: any) => console.log(error));

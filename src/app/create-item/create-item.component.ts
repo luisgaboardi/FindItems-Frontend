@@ -30,6 +30,10 @@ export class CreateItemComponent implements OnInit {
   }
   
   onSubmit(){
+    if (!this.item.type || !this.item.description) {
+      alert('Os dois campos são obrigatórios.');
+      return;
+    } 
     console.log(this.item);
     this.saveItem();
   }
