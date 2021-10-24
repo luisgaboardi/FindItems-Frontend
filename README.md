@@ -20,5 +20,9 @@ Um sistema de controle de items de um achados e perdidos, implementado em Typesc
 * Para executar o programa, é necessário que tanto o Frontend quando o [Backend](https://github.com/luisgaboardi/FindItems-Backend) estejam rodando na mesma máquina.
 
 ### Como usar
+
+Instale as dependências:
+```npm i```
+
 Na pasta principal do projeto, execute o seguinte comando no terminal:
 ```ng serve```
